@@ -1,7 +1,7 @@
 react-native-sensor-manager
 ============================
 
-Wrapper for react-native. Accelerometer, Gyroscope, Magnetometer, Step Counter, Thermometer are supported for now.
+Wrapper for react-native. Accelerometer, Gyroscope, Magnetometer, Orientation, Step Counter, Thermometer, LightSensor, and Proximity Sensor are supported for now.
 
 Add it to your project
 -------------------------
@@ -12,7 +12,7 @@ Add it to your project
 
 `rnpm link`
 
-### Option: Manually
+### Option: Manually (try it if an runtime error occurs after `nrpm link`)
 
 Make alterations to the following files:
 
@@ -74,7 +74,7 @@ public class MainActivity extends Activity implements DefaultHardwareBackBtnHand
 ```java
 import com.sensormanager.SensorManagerPackage; // <------ add package
 
-public class MainActivity extends ReactActivity {
+public class MainApplication extends Application implements ReactApplication {
    // ...
     @Override
     protected List<ReactPackage> getPackages() {
@@ -94,7 +94,7 @@ import React, {
   DeviceEventEmitter // will emit events that you can listen to
 } from 'react-native';
 
-var mSensorManager = require('NativeModules').SensorManager;
+import { mSensorManager } from 'NativeModules';
 ```
 
 
