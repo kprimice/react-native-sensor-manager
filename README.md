@@ -12,7 +12,7 @@ Add it to your project
 
 `rnpm link`
 
-### Option: Manually (try it if an runtime error occurs after `nrpm link`)
+### Option: Manually (try it if an runtime error occurs after `rnpm link`)
 
 Make alterations to the following files:
 
