@@ -172,6 +172,17 @@ DeviceEventEmitter.addListener('Thermometer', function (data) {
 SensorManager.stopThermometer();
 ```
 
+### Barometer
+```js
+SensorManager.startBarometer(1000);
+DeviceEventEmitter.addListener('Barometer', function (data) {
+  /**
+  * data.press
+  **/
+});
+SensorManager.stopBarometer();
+```
+
 ### LightSensor
 ```js
 SensorManager.startLightSensor(100);
