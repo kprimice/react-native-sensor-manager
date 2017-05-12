@@ -16,6 +16,7 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
 	private MagnetometerRecord		mMagnetometerRecord = null;
 	private StepCounterRecord		mStepCounterRecord = null;
 	private ThermometerRecord		mThermometerRecord = null;
+	private BarometerRecord		mBarometerRecord = null;
 	private MotionValueRecord		mMotionValueRecord = null;
 	private OrientationRecord		mOrientationRecord = null;
 	private ProximityRecord			mProximityRecord = null;
@@ -96,6 +97,19 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
     public void stopThermometer() {
 		if (mThermometerRecord != null)
 			mThermometerRecord.stop();
+    }
+
+    @ReactMethod
+    public int startBarometer(int delay) {
+		if (mBarometerRecord == null)
+			mBarometerRecord = new BarometerRecord(mReactContext);
+		return (mBarometerRecord.start(delay));
+    }
+
+    @ReactMethod
+    public void stopBarometer() {
+		if (mBarometerRecord != null)
+			mBarometerRecord.stop();
     }
 
     @ReactMethod
