@@ -1,2 +1,3 @@
 android/build
 **/*.swp
+.DS_Store
