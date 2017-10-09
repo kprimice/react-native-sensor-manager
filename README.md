@@ -137,6 +137,19 @@ DeviceEventEmitter.addListener('Magnetometer', function (data) {
 SensorManager.stopMagnetometer();
 ```
 
+### Gravity
+```js
+DeviceEventEmitter.addListener('Gravity', function (data) {
+  /**
+  * data.x
+  * data.y
+  * data.z
+  **/
+});
+SensorManager.startGravity(100);
+SensorManager.stopGravity();
+```
+
 ### Orientation
 ```js
 SensorManager.startOrientation(100);

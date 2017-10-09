@@ -105,11 +105,15 @@ public class OrientationRecord implements SensorEventListener {
             roll = 360 - (0 - roll);
           }
 
+          i++;
+          if ((curTime - lastUpdate) > delay) {
+              i = 0;
           map.putDouble("azimuth", heading);
           map.putDouble("pitch", pitch);
           map.putDouble("roll", roll);
           sendEvent("Orientation", map);
           lastUpdate = curTime;
+          }
         }
       }
     }

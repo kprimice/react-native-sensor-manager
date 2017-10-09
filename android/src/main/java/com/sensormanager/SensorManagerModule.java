@@ -10,8 +10,8 @@ import com.facebook.react.bridge.Callback;
 import android.util.Log;
 
 public class SensorManagerModule extends ReactContextBaseJavaModule {
-    private static final String		REACT_CLASS = "SensorManager";
-    private AccelerometerRecord		mAccelerometerRecord = null;
+  private static final String		REACT_CLASS = "SensorManager";
+  private AccelerometerRecord		mAccelerometerRecord = null;
 	private GyroscopeRecord 		mGyroscopeRecord = null;
 	private MagnetometerRecord		mMagnetometerRecord = null;
 	private StepCounterRecord		mStepCounterRecord = null;
@@ -20,6 +20,7 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
 	private OrientationRecord		mOrientationRecord = null;
 	private ProximityRecord			mProximityRecord = null;
   private LightSensorRecord   mLightSensorRecord = null;
+  private GravityRecord		      mGravityRecord = null;
 
 	private ReactApplicationContext	mReactContext;
 
@@ -148,6 +149,19 @@ public class SensorManagerModule extends ReactContextBaseJavaModule {
     public void stopLightSensor() {
       if(mLightSensorRecord != null)
         mLightSensorRecord.stop();
+    }
+
+    @ReactMethod
+    public int startGravity(int delay) {
+		if (mGravityRecord == null)
+			mGravityRecord = new GravityRecord(mReactContext);
+		return (mGravityRecord.start(delay));
+    }
+
+    @ReactMethod
+    public void stopGravity() {
+		if (mGravityRecord != null)
+			mGravityRecord.stop();
     }
 
 	/*
