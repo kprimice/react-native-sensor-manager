@@ -108,6 +108,7 @@ public class OrientationRecord implements SensorEventListener {
           map.putDouble("azimuth", heading);
           map.putDouble("pitch", pitch);
           map.putDouble("roll", roll);
+          map.putDouble("timestamp", sensorEvent.timestamp);
           sendEvent("Orientation", map);
           lastUpdate = curTime;
         }

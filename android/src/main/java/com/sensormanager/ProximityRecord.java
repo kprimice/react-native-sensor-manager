@@ -79,6 +79,7 @@ public class ProximityRecord implements SensorEventListener {
                 map.putBoolean("isNear", value < maxRange);
                 map.putDouble("value", value);
                 map.putDouble("maxRange", maxRange);
+                map.putDouble("timestamp", sensorEvent.timestamp);
 
                 sendEvent("Proximity", map);
                 lastUpdate = curTime;

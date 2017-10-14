@@ -69,6 +69,7 @@ public class LightSensorRecord implements SensorEventListener {
             if ((curTime - lastUpdate) > delay) {
                 i = 0;
                 map.putDouble("light", sensorEvent.values[0]);
+				map.putDouble("timestamp", sensorEvent.timestamp);
                 sendEvent("LightSensor", map);
                 lastUpdate = curTime;
             }

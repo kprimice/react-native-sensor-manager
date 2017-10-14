@@ -78,6 +78,7 @@ public class AccelerometerRecord implements SensorEventListener {
 				map.putDouble("x", sensorEvent.values[0]);
 				map.putDouble("y", sensorEvent.values[1]);
 				map.putDouble("z", sensorEvent.values[2]);
+				map.putDouble("timestamp", sensorEvent.timestamp);
 				sendEvent("Accelerometer", map);
                 lastUpdate = curTime;
             }
