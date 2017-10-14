@@ -84,6 +84,7 @@ public class MotionValueRecord implements SensorEventListener {
             if ((curTime - lastUpdate) > delay) {
                 i = 0;
 				map.putDouble("value", currentValue);
+				map.putDouble("timestamp", sensorEvent.timestamp);
 				sendEvent("MotionValue", map);
                 motionValue = currentValue;
                 currentValue = 0;
