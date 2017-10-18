@@ -86,30 +86,35 @@ public class OrientationRecord implements SensorEventListener {
         boolean success = mSensorManager.getRotationMatrix(R, I, mGravity, mGeomagnetic);
         if (success) {
           long curTime = System.currentTimeMillis();
-          float orientation[] = new float[3];
-          mSensorManager.getOrientation(R, orientation);
 
-          float heading = (float)((Math.toDegrees(orientation[0])) % 360.0f);
-          float pitch = (float)((Math.toDegrees(orientation[1])) % 360.0f);
-          float roll = (float)((Math.toDegrees(orientation[2])) % 360.0f);
+          i++;
+          if ((curTime - lastUpdate) > delay) {
+              i = 0;
+              float orientation[] = new float[3];
+              mSensorManager.getOrientation(R, orientation);
 
-          if (heading < 0) {
-            heading = 360 - (0 - heading);
+              float heading = (float) ((Math.toDegrees(orientation[0])) % 360.0f);
+              float pitch = (float) ((Math.toDegrees(orientation[1])) % 360.0f);
+              float roll = (float) ((Math.toDegrees(orientation[2])) % 360.0f);
+
+              if (heading < 0) {
+                  heading = 360 - (0 - heading);
+              }
+
+              if (pitch < 0) {
+                  pitch = 360 - (0 - pitch);
+              }
+
+              if (roll < 0) {
+                  roll = 360 - (0 - roll);
+              }
+
+              map.putDouble("azimuth", heading);
+              map.putDouble("pitch", pitch);
+              map.putDouble("roll", roll);
+              sendEvent("Orientation", map);
+              lastUpdate = curTime;
           }
-
-          if (pitch < 0) {
-            pitch = 360 - (0 - pitch);
-          }
-
-          if (roll < 0) {
-            roll = 360 - (0 - roll);
-          }
-
-          map.putDouble("azimuth", heading);
-          map.putDouble("pitch", pitch);
-          map.putDouble("roll", roll);
-          sendEvent("Orientation", map);
-          lastUpdate = curTime;
         }
       }
     }
