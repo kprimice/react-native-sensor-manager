@@ -6,7 +6,7 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.util.Log;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
 
 import java.io.*;
 import java.util.Date;
@@ -57,7 +57,7 @@ public class OrientationRecord implements SensorEventListener {
       }
     }
 
-    private void sendEvent(String eventName, @Nullable WritableMap params)
+    private void sendEvent(String eventName, @NonNull WritableMap params)
     {
         try {
             mReactContext
